@@ -1,0 +1,4 @@
+com\jc\osgi\ProviderActivator.class
+com\jc\osgi\App.class
+com\jc\osgi\HelloService.class
+com\jc\osgi\HelloServiceImpl.class

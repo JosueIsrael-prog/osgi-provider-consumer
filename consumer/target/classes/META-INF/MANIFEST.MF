@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1762572330625
+Build-Jdk-Spec: 17
+Bundle-Activator: com.jc.osgi.ConsumerActivator
+Bundle-ManifestVersion: 2
+Bundle-Name: Consumer Bundle
+Bundle-SymbolicName: com.jc.osgi.consumer
+Bundle-Version: 1.0.0
+Created-By: Apache Maven Bundle Plugin 5.1.8
+Export-Package: com.jc.osgi;uses:="org.osgi.framework";version="1.0.0"
+Import-Package: org.osgi.framework;version="[1.8,2)",java.io,java.lang,j
+ ava.lang.invoke,com.jc.osgi;version="[1.0.0,2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=17))"
+Tool: Bnd-6.3.1.202206071316

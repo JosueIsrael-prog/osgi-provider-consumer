@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.jc.osgi</groupId>
+	<artifactId>consumer</artifactId>
+	<version>1.0.0</version>
+	<packaging>bundle</packaging>
+
+	<name>Consumer Bundle</name>
+
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<!-- API OSGi (BundleContext, ServiceReference, etc.) -->
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>osgi.core</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Provider solo para compilar la interfaz (NO se empaca en el JAR) -->
+		<dependency>
+			<groupId>com.jc.osgi</groupId>
+			<artifactId>provider</artifactId>
+			<version>1.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>5.1.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-Name>Consumer Bundle</Bundle-Name>
+						<Bundle-SymbolicName>com.jc.osgi.consumer</Bundle-SymbolicName>
+
+						<!-- Importa la API del provider con rango de versión -->
+						<Import-Package>
+							com.jc.osgi;version="[1.0.0,2)",
+							org.osgi.framework,
+							*
+						</Import-Package>
+
+						<!-- Activador del consumer -->
+						<Bundle-Activator>com.jc.osgi.ConsumerActivator</Bundle-Activator>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
